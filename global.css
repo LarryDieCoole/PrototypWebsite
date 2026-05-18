@@ -1,0 +1,47 @@
+/* alles resetten */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Seite komplett weiß */
+body {
+  background: white;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* alle Bilder fullscreen */
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+.objektArt {
+  position: absolute;
+  width: auto;   
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Layer Reihenfolge */
+.hintergrund {
+  z-index: 1;
+}
+
+.vordergrund {
+  z-index: 2;
+}
