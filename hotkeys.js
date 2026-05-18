@@ -17,13 +17,38 @@ const bilder = {
     'hintergrund/meer_unter_2.jpg',
     'hintergrund/nacht.png',
     'hintergrund/wolkenkratzer.jpg',
-    'hintergrund/wueste.jpg'
-
+    'hintergrund/wueste.jpg', 
+    'hintergrund/himmel.png'
  ],
 
 
-  vordergrund: ['hintergrund/test_2.png', 'vordergrund/wueste.png'],
-  objektArt: Array.from({ length: 10 }, () => [])
+  vordergrund: [
+    //'hintergrund/test_2.png',
+    'vordergrund/wueste.png', 
+    'vordergrund/berge2.png',
+    'vordergrund/dschungel.png', 
+    'vordergrund/feld.png',
+  ],
+
+  objektArt: [
+    ['objekte/ast.png', 'objekte/steine.png'],      // Taste 1
+    ['objekte/blumen.png', 'objekte/ast.png'],      // Taste 2
+    ['objekte/steine.png', 'objekte/ast.png'],      // Taste 3
+    [],                                             // Taste 4
+    [],                                             // Taste 5
+    [],                                             // Taste 6
+    [],                                             // Taste 7
+    [],                                             // Taste 8
+    [],                                             // Taste 9
+    []                                              // Taste 0
+  ]
+  
+  /*objektArt: Array.from({ length: 10 }, () => [
+    ['objekte/ast.png', 'objekte/steine.png'], 
+    ['objekte/blumen.png', 'objekte/ast.png'], 
+    ['objekte/steine.png', 'objekte/ast.png'], 
+    [], [], [], [], [], [], []
+   ])*/
 };
 
 // Index für Hintergrund/Vordergrund
@@ -159,12 +184,50 @@ hotkeys('y', () => {
   state.tool = 'objektArt';
 });
 
+// =======================
+// OBJEKT AUF BILDSCHIRM HINZUFÜGEN
+// =======================
+
+function addObjectToScreen(slot, imgIndex) {
+  const img = document.createElement('img');
+  img.src = bilder.objektArt[slot][imgIndex];
+  img.className = 'objektArt';
+  document.body.appendChild(img);
+}
+
 
 // =======================
 // SPEICHERN / ADDEN
 // =======================
+function addObjectToScreen(slot, imgIndex) {
+  const img = document.createElement('img');
+  img.src = bilder.objektArt[slot][imgIndex];
+  img.className = 'placedObject';
+  document.body.appendChild(img);
+
+  objects.push({
+    slot: slot,
+    index: imgIndex,
+    element: img
+  });
+}
 
 hotkeys('a', () => {
+  if (state.tool === 'hintergrund') {
+    saved.hintergrund = index.hintergrund;
+  }
+
+  else if (state.tool === 'vordergrund') {
+    saved.vordergrund = index.vordergrund;
+  }
+
+  else if (state.tool === 'objektArt') {
+    addObjectToScreen(selectedSlot, objektIndex[selectedSlot]);
+  }
+});
+
+
+/*hotkeys('a', () => {
   if (state.tool === 'hintergrund') {
     saved.hintergrund = index.hintergrund;
   }
@@ -179,8 +242,20 @@ hotkeys('a', () => {
       index: objektIndex[selectedSlot]
     });
   }
-});
+});*/
+// =======================
+// UNDO (Z) - Letztes Objekt entfernen
+// =======================
 
+hotkeys('z', () => {
+  if (objects.length === 0) return;
+
+  const lastObject = objects.pop();
+
+  if (lastObject.element) {
+    lastObject.element.remove();
+  }
+});
 
 // =======================
 // NUMMERN 1–0 SLOT WAHL
