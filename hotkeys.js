@@ -28,16 +28,21 @@ const bilder = {
     'vordergrund/berge2.png',
     'vordergrund/dschungel.png', 
     'vordergrund/feld.png',
+    'vordergrund/feld2.png',
+    'vordergrund/stadt.png', 
+    'vordergrund/brücke.png', 
+    'vordergrund/meer.png', 
+    'vordergrund/fluss.png'
   ],
 
   objektArt: [
     ['objekte/ast.png', 'objekte/steine.png'],      // Taste 1
     ['objekte/blumen.png', 'objekte/ast.png'],      // Taste 2
-    ['objekte/steine.png', 'objekte/ast.png'],      // Taste 3
-    [],                                             // Taste 4
-    [],                                             // Taste 5
-    [],                                             // Taste 6
-    [],                                             // Taste 7
+    ['objekte/steine.png', 'objekte/sonne.png'],      // Taste 3
+    ['objekte/algen.png', 'objekte/fische.png'],                                             // Taste 4
+    ['objekte/blumen.png', 'objekte/sonne.png'],                                             // Taste 5
+    ['objekte/ast.png', 'objekte/fische.png'],                                             // Taste 6
+    ['objekte/sonne.png', 'objekte/algen.png'],                                             // Taste 7
     [],                                             // Taste 8
     [],                                             // Taste 9
     []                                              // Taste 0
