@@ -43,7 +43,7 @@ const bilder = {
     ['objekte/blumen.png', 'objekte/sonne.png'],                                             // Taste 5
     ['objekte/ast.png', 'objekte/fische.png'],                                             // Taste 6
     ['objekte/sonne.png', 'objekte/algen.png'],                                             // Taste 7
-    [],                                             // Taste 8
+    ['objekte/fische.png', 'objekte/ast.png'],                                             // Taste 8
     [],                                             // Taste 9
     []                                              // Taste 0
   ]
